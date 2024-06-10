@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 /*
 Zadání: Upravte efekt v této komponentě tak, aby se při **každém** zobrazení komponenty v konzoli objevil
   text „Jsem tady“.
@@ -6,7 +6,7 @@ Zadání: Upravte efekt v této komponentě tak, aby se při **každém** zobraz
 
 export const Ukol1 = () => {
   useEffect(() => {
-    // Zde napište svůj kód...
+    console.log('Jsem tady');
   }, []);
 
   return (

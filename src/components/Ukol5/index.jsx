@@ -12,9 +12,31 @@ Krok 3: Pokud je stav `postava` `null`, nechte zobrazen text `Načítám…`. Po
 
 export const Ukol5 = () => {
   const [postava, setPostava] = useState(null);
+
+  useEffect(() => {
+    const fetchCharacter = async () => {
+      let fetchURL;
+      fetchURL =
+        'https://hp-api.onrender.com/api/character/ca3827f0-375a-4891-aaa5-f5e8a5bad225';
+      const response = await fetch(fetchURL);
+      const data = await response.json();
+      console.log(data);
+      setPostava(data[0]);
+    };
+    fetchCharacter();
+  }, []);
+
   return (
     <>
-      <p>Načítám…</p>
+      {postava ? (
+        <div>
+          <h2>{postava.name}</h2>
+          <p>Acted by: {postava.actor}</p>
+          <img src={postava.image} width={100} alt={postava.name} />
+        </div>
+      ) : (
+        <p>Načítám…</p>
+      )}
     </>
   );
 };
